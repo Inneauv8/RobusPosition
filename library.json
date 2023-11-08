@@ -1,0 +1,13 @@
+{
+    "name":"",
+    "description":"",
+    "keywords":"",
+    "authors":
+    [
+      {
+        "name": "Name",
+        "maintainer": true
+      }
+    ],
+    "version": "1.0.0"
+  }
