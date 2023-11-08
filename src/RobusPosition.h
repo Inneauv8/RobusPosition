@@ -6,7 +6,10 @@
 #include <mathX.h>
 
 namespace RobotPosition
-{
+{   
+    /**
+     * @brief Vector structure to represent position and direction.
+     */
     struct Vector {
         Vector() : x(0), y(0) {}
         float x;
@@ -21,11 +24,15 @@ namespace RobotPosition
     void setPosition(float x, float y);
     void setPosition(Vector position);
 
-    bool isFollowingTarget();
-    bool setFollowingTarget(boolean followingTarget);
+    Vector getTarget();
+    void setTarget(float x, float y);
+    void setTarget(Vector position);
 
-    bool startFollowingTarget();
-    bool stopFollowingTarget();
+    bool isFollowingTarget();
+    void setFollowingTarget(boolean followingTarget);
+
+    void startFollowingTarget();
+    void stopFollowingTarget();
 
     void setFollowAngularVelocityScale(float scale);
     void setFollowVelocity(float velocity);
