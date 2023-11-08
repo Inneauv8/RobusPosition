@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['y_0',['y',['../structRobotPosition_1_1Point.html#a11579ca3cf291a867946b3d337727adc',1,'RobotPosition::Point']]]
+  ['x_0',['x',['../structRobotPosition_1_1Vector.html#a1ca788334235b4cc7f59a713e36623ba',1,'RobotPosition::Vector']]]
 ];

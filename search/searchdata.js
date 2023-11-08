@@ -1,9 +1,9 @@
 var indexSectionsWithContent =
 {
-  0: "gprsuxy",
-  1: "p",
+  0: "girsuvxy",
+  1: "v",
   2: "r",
-  3: "gpsu",
+  3: "gisuv",
   4: "xy"
 };
 
