@@ -4,7 +4,7 @@ namespace RobotPosition
 {
     void update() {
         
-        RobotMovement::update();
+        RobusMovement::update();
     }
 
     float getOrientation() {
