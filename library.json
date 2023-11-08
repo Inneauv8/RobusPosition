@@ -11,6 +11,7 @@
     ],
     "version": "1.0.0",
     "dependencies": {
-      "RobusMovement": "https://github.com/Inneauv8/RobusMovement"
+      "RobusMovement": "https://github.com/Inneauv8/RobusMovement",
+      "MathX": "https://github.com/Inneauv8/MathX"
     }
   }
