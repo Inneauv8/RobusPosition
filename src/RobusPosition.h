@@ -3,11 +3,12 @@
 
 #include <RobusPosition.h> 
 #include <RobusMovement.h>
+#include <mathX.h>
 
 namespace RobotPosition
 {
-    struct Point {
-        Point() : x(0), y(0) {}
+    struct Vector {
+        Vector() : x(0), y(0) {}
         float x;
         float y;
     };
@@ -16,13 +17,32 @@ namespace RobotPosition
 
     float getOrientation();
 
-    Point getPosition();
+    Vector getPosition();
     void setPosition(float x, float y);
-    void setPosition(Point position);
+    void setPosition(Vector position);
+
+    bool isFollowingTarget();
+    bool setFollowingTarget(boolean followingTarget);
+
+    bool startFollowingTarget();
+    bool stopFollowingTarget();
+
+    void setFollowAngularVelocityScale(float scale);
+    void setFollowVelocity(float velocity);
+    void setCurveTightness(float tightness);
+
+    float getFollowAngularVelocityScale();
+    float getFollowVelocity();
+    float getCurveTightness();
 
     namespace {
-        extern Point position;
-        extern Point target;
+        extern Vector position;
+        extern Vector target;
+        extern bool followingTarget;
+
+        extern float followAngularVelocityScale;
+        extern float followVelocity;
+        extern float curveTightness;
     }
 }
 
