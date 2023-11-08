@@ -29,7 +29,7 @@ namespace RobotPosition
     void setTarget(Vector position);
 
     bool isFollowingTarget();
-    void setFollowingTarget(boolean followingTarget);
+    void setFollowingTarget(bool followingTarget);
 
     void startFollowingTarget();
     void stopFollowingTarget();
