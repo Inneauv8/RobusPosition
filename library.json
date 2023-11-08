@@ -1,11 +1,11 @@
 {
-    "name":"",
-    "description":"",
-    "keywords":"",
+    "name":"RobusPosition",
+    "description":"A library for getting XY Robus position and following XY target point",
+    "keywords":"robus",
     "authors":
     [
       {
-        "name": "Name",
+        "name": "Mathieu Durand",
         "maintainer": true
       }
     ],
