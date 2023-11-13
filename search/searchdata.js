@@ -1,9 +1,9 @@
 var indexSectionsWithContent =
 {
-  0: "girsuvxy",
+  0: "ginrsuvxy",
   1: "v",
   2: "r",
-  3: "gisuv",
+  3: "ginsuv",
   4: "xy"
 };
 

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['robotposition_0',['RobotPosition',['../namespaceRobotPosition.html',1,'']]]
+  ['normalizeangle_0',['normalizeAngle',['../namespaceRobotPosition.html#a93bb37a269d9f49d9de08d6438279158',1,'RobotPosition']]]
 ];
