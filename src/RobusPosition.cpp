@@ -2,6 +2,35 @@
 
 namespace RobotPosition
 {
+    // Helper function to normalize an angle to the range [0, 2*PI]
+    float normalizeAngle(float angle) {
+        while (angle < 0) {
+            angle += TWO_PI;
+        }
+        while (angle >= TWO_PI) {
+            angle -= TWO_PI;
+        }
+        return angle;
+    }
+
+    float smallestSignedAngle(float currentAngle, float targetAngle) {
+        // Ensure both angles are in the range [0, 2*PI]
+        currentAngle = normalizeAngle(currentAngle);
+        targetAngle = normalizeAngle(targetAngle);
+
+        // Calculate the difference between the angles
+        float angleDifference = targetAngle - currentAngle;
+
+        // Normalize the angle difference to be in the range [-PI, PI]
+        if (angleDifference > PI) {
+            angleDifference -= TWO_PI;
+        } else if (angleDifference < -PI) {
+            angleDifference += TWO_PI;
+        }
+
+        return angleDifference;
+    }
+
     /**
      * @brief Update the robot position based on its velocity and orientation.
      *
@@ -14,42 +43,47 @@ namespace RobotPosition
         float dt = (time - oldTime) / 1000000.0;
         oldTime = time;
 
-        RobusMovement::update();
-        float velocity = RobusMovement::getVelocity();
-        float orientation = RobusMovement::computeOrientation();
+        float robusVelocity = RobusMovement::getVelocity();
+        float robusOrientation = RobusMovement::computeOrientation();
 
-        float xVelocity = cos(orientation) * velocity;
-        float yVelocity = sin(orientation) * velocity;
+        float xVelocity = cos(robusOrientation) * robusVelocity * (inverted ? -1 : 1);
+        float yVelocity = sin(robusOrientation) * robusVelocity * (inverted ? -1 : 1);
 
         position.x += xVelocity * dt;
         position.y += yVelocity * dt;
 
         if (followingTarget) {
             float targetDistance = dist(position.x, position.y, target.x, target.y);
-            if (targetDistance != 0) {
-                Vector targetDirection;
+            if (targetDistance > 0.01) {
+                Vector targetDirection = Vector(0, 0);
                 targetDirection.x = (target.x - position.x) / targetDistance;
                 targetDirection.y = (target.y - position.y) / targetDistance;
 
                 float targetAngle = atan2(targetDirection.y, targetDirection.x);
 
                 float robusOrientation = RobusMovement::computeOrientation();
-                Vector robusDirection;
+                Vector robusDirection = Vector(0, 0);
                 robusDirection.x = cos(robusOrientation);
                 robusDirection.y = sin(robusOrientation);
 
                 float directionDot = robusDirection.x * targetDirection.x + robusDirection.y * targetDirection.y;
-                float velocity = pow(directionDot, curveTightness) * velocity;
+                float velocity = pow(directionDot * 0.9 + 0.1, curveTightness) * followVelocity * (inverted ? -1 : 1);
                 
-                float deltaOrientation = smallestAngleDifference(robusOrientation, targetAngle);
+                float deltaOrientation = smallestSignedAngle(robusOrientation, targetAngle);
                 float angularVelocity = deltaOrientation * followAngularVelocityScale;
-
+                
+                //float distanceError = directionDot * distanceError
+                //float velocity = pow(directionDot, curveTightness) * targetDistance; //  higher = higher error when in the right direction (will turn more before moving forward);
+                //velocity = clamp(velocity * 10, -followVelocity, followVelocity);
+                
                 RobusMovement::setVelocity(velocity);
-                RobusMovement::setAngularVelocity(angularVelocity);
+                RobusMovement::setAngularVelocity(clamp(angularVelocity, -0.5, 0.5));
             } else {
                 RobusMovement::stop();
             }
         }
+        
+        RobusMovement::update();
     }
 
     /**
@@ -128,14 +162,16 @@ namespace RobotPosition
      * @brief Start following the target by setting the following state to true.
      */
     void startFollowingTarget() {
-        setFollowingTarget(true);
+        followingTarget = true;
+        //setFollowingTarget(true);
     }
 
     /**
      * @brief Stop following the target by setting the following state to false.
      */
     void stopFollowingTarget() {
-        setFollowingTarget(false);
+        followingTarget = false;
+        //setFollowingTarget(false);
     }
 
     /**
@@ -186,13 +222,30 @@ namespace RobotPosition
         return curveTightness;
     }
 
-    namespace {
-        Vector position = {}; /**< The current position of the robot. */
-        Vector target = {}; /**< The target position for the robot to follow. */
-        bool followingTarget = false; /**< Flag indicating whether the robot is following a target. */
+     /**
+     * @brief Get if the robot direction is inverted.
+     * @return If the robot direction is inverted.
+     */
+    bool isInverted() {
+        return inverted;
+    }
 
-        float followAngularVelocityScale = 0.1; /**< Scale factor for angular velocity when following a target. */
-        float followVelocity = 10; /**< Velocity at which the robot follows a target. */
-        float curveTightness = 1; /**< Tightness of the curve when following a target. */
+    /**
+     * @brief Set if the robot direction is inverted.
+     * @param invert if the robot direction will be inverted or not.
+     */
+    void setInverted(bool invert) {
+        inverted = invert;
+    }
+
+    namespace {
+        Vector position = Vector(); /**< The current position of the robot. */
+        Vector target = Vector(); /**< The target position for the robot to follow. */
+        bool followingTarget = false; /**< Flag indicating whether the robot is following a target. */
+        //5, 10, 5
+        float followAngularVelocityScale = 3.0; /**< Scale factor for angular velocity when following a target. */
+        float followVelocity = 3; /**< Velocity at which the robot follows a target. */
+        float curveTightness = 50; /**< Tightness of the curve when following a target. */
+        bool inverted = true;
     }
 }

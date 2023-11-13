@@ -11,7 +11,10 @@ namespace RobotPosition
      * @brief Vector structure to represent position and direction.
      */
     struct Vector {
-        Vector() : x(0), y(0) {}
+        Vector(float x = 0, float y = 0) : x(0), y(0) {
+            this->x = x;
+            this->y = y;
+        }
         float x;
         float y;
     };
@@ -42,6 +45,9 @@ namespace RobotPosition
     float getFollowVelocity();
     float getCurveTightness();
 
+    bool isInverted();
+    void setInverted(bool invert);
+
     namespace {
         extern Vector position;
         extern Vector target;
@@ -50,6 +56,8 @@ namespace RobotPosition
         extern float followAngularVelocityScale;
         extern float followVelocity;
         extern float curveTightness;
+
+        extern bool inverted;
     }
 }
 
