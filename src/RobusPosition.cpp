@@ -246,6 +246,6 @@ namespace RobusPosition
         float followAngularVelocityScale = 3.0; /**< Scale factor for angular velocity when following a target. */
         float followVelocity = 3; /**< Velocity at which the robot follows a target. */
         float curveTightness = 50; /**< Tightness of the curve when following a target. */
-        bool inverted = true;
+        bool inverted = false;
     }
 }
