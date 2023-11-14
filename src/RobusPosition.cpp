@@ -1,6 +1,6 @@
 #include "RobusPosition.h"
 
-namespace RobotPosition
+namespace RobusPosition
 {
     // Helper function to normalize an angle to the range [0, 2*PI]
     float normalizeAngle(float angle) {

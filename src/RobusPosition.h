@@ -5,7 +5,7 @@
 #include <RobusMovement.h>
 #include <mathX.h>
 
-namespace RobotPosition
+namespace RobusPosition
 {   
     /**
      * @brief Vector structure to represent position and direction.
