@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['robotposition_0',['RobotPosition',['../namespaceRobotPosition.html',1,'']]]
+  ['robusposition_0',['RobusPosition',['../namespaceRobusPosition.html',1,'']]]
 ];

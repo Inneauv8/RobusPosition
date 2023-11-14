@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['vector_0',['Vector',['../structRobotPosition_1_1Vector.html#aa47fca6833e9802fcdd36156dfe34f66',1,'RobotPosition::Vector']]]
+  ['vector_0',['Vector',['../structRobusPosition_1_1Vector.html#a59a17647edbda3b24c29fd3c9cace112',1,'RobusPosition::Vector']]]
 ];

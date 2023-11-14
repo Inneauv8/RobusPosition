@@ -1,13 +1,13 @@
 var searchData=
 [
-  ['setcurvetightness_0',['setCurveTightness',['../namespaceRobotPosition.html#a948fa19bb3485ea38814272351a03865',1,'RobotPosition']]],
-  ['setfollowangularvelocityscale_1',['setFollowAngularVelocityScale',['../namespaceRobotPosition.html#a3ed0b659891b91ac2fded978b6e4374a',1,'RobotPosition']]],
-  ['setfollowingtarget_2',['setFollowingTarget',['../namespaceRobotPosition.html#a5f193e0ed747d3be3bda25882140ff7e',1,'RobotPosition']]],
-  ['setfollowvelocity_3',['setFollowVelocity',['../namespaceRobotPosition.html#ac146bb38d43293a499e17b65e1fe4624',1,'RobotPosition']]],
-  ['setinverted_4',['setInverted',['../namespaceRobotPosition.html#a6730e118de9d4549f6249173a95bbd57',1,'RobotPosition']]],
-  ['setposition_5',['setPosition',['../namespaceRobotPosition.html#a0b9135d67a831c4ca6f4b7a0cb960ec6',1,'RobotPosition::setPosition(float x, float y)'],['../namespaceRobotPosition.html#a72d29c158fce3e024710ebdc4d08a763',1,'RobotPosition::setPosition(Vector position)']]],
-  ['settarget_6',['setTarget',['../namespaceRobotPosition.html#a6b2539bead3bccba6534f8573a5f8740',1,'RobotPosition::setTarget(float x, float y)'],['../namespaceRobotPosition.html#a04964b8f500dfb4aeac7ca151647275f',1,'RobotPosition::setTarget(Vector position)']]],
-  ['smallestsignedangle_7',['smallestSignedAngle',['../namespaceRobotPosition.html#a5fbaeb5a4820870d86aff79d1c35968a',1,'RobotPosition']]],
-  ['startfollowingtarget_8',['startFollowingTarget',['../namespaceRobotPosition.html#a57947709d08e9fb3c2a2a9af35704e39',1,'RobotPosition']]],
-  ['stopfollowingtarget_9',['stopFollowingTarget',['../namespaceRobotPosition.html#a9c8546e8d43c6d0681a0d27959c7e1c7',1,'RobotPosition']]]
+  ['setcurvetightness_0',['setCurveTightness',['../namespaceRobusPosition.html#a87c9ca027c4f1a47b8d42c717aeb3bd7',1,'RobusPosition']]],
+  ['setfollowangularvelocityscale_1',['setFollowAngularVelocityScale',['../namespaceRobusPosition.html#a2f0154c4cfcc965fb5903d7eea7e0201',1,'RobusPosition']]],
+  ['setfollowingtarget_2',['setFollowingTarget',['../namespaceRobusPosition.html#a1ad340afb7ca240d9126257a73dd0912',1,'RobusPosition']]],
+  ['setfollowvelocity_3',['setFollowVelocity',['../namespaceRobusPosition.html#aebd977dbc9f74ad878635fd4b1dcdc12',1,'RobusPosition']]],
+  ['setinverted_4',['setInverted',['../namespaceRobusPosition.html#a8e8639725d4b04715fab7f3b10d55684',1,'RobusPosition']]],
+  ['setposition_5',['setPosition',['../namespaceRobusPosition.html#a91113937f45751fe42c9cfdfe495fc4e',1,'RobusPosition::setPosition(float x, float y)'],['../namespaceRobusPosition.html#a9ad846f4692cde97012b083551472115',1,'RobusPosition::setPosition(Vector position)']]],
+  ['settarget_6',['setTarget',['../namespaceRobusPosition.html#a38a6e959627e026cebaf8eff5f8f8481',1,'RobusPosition::setTarget(float x, float y)'],['../namespaceRobusPosition.html#a20b9d9f022834b36ce9e0b45d3e05395',1,'RobusPosition::setTarget(Vector position)']]],
+  ['smallestsignedangle_7',['smallestSignedAngle',['../namespaceRobusPosition.html#abae3688bb9c5129291ce3bcdc127b455',1,'RobusPosition']]],
+  ['startfollowingtarget_8',['startFollowingTarget',['../namespaceRobusPosition.html#aeae695dc99cf9a8189df344c1998cbff',1,'RobusPosition']]],
+  ['stopfollowingtarget_9',['stopFollowingTarget',['../namespaceRobusPosition.html#a973a848487342e26576131cac4e8af99',1,'RobusPosition']]]
 ];

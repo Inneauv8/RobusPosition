@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['isfollowingtarget_0',['isFollowingTarget',['../namespaceRobotPosition.html#a20f612ecca665ab221dedf7e2d6a1130',1,'RobotPosition']]],
-  ['isinverted_1',['isInverted',['../namespaceRobotPosition.html#adedd3d5b801330389691269baf808469',1,'RobotPosition']]]
+  ['isfollowingtarget_0',['isFollowingTarget',['../namespaceRobusPosition.html#a9a4c20fc8f6a8169c59ea147e8df1a97',1,'RobusPosition']]],
+  ['isinverted_1',['isInverted',['../namespaceRobusPosition.html#aa02d3ac8a12706fa07c709cf0e257add',1,'RobusPosition']]]
 ];

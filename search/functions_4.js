@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['update_0',['update',['../namespaceRobotPosition.html#a2e3bb9491b5e05bfddbc36ab5cf86197',1,'RobotPosition']]]
+  ['update_0',['update',['../namespaceRobusPosition.html#a495d86ee01879435091a866dc00b5cc0',1,'RobusPosition']]]
 ];
