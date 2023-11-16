@@ -66,6 +66,9 @@ namespace RobusPosition
             xIntegration = radius * (sin(robusOrientation + robusAngularVelocity * dt) - sin(robusOrientation));
             yIntegration = radius * (cos(robusOrientation) - cos(robusOrientation + robusAngularVelocity * dt));
         }
+
+        position.x += xIntegration;
+        position.y += yIntegration;
         #endif
 
         if (followingTarget) {
