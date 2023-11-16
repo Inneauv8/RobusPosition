@@ -1,4 +1,5 @@
 #include "RobusPosition.h"
+#define COMPLEX_MOVEMENT_INTEGRATION
 
 namespace RobusPosition
 {
@@ -43,14 +44,29 @@ namespace RobusPosition
         float dt = (time - oldTime) / 1000000.0;
         oldTime = time;
 
-        float robusVelocity = RobusMovement::getVelocity();
-        float robusOrientation = RobusMovement::computeOrientation();
+        double robusVelocity = (double) RobusMovement::getVelocity() * (inverted ? -1 : 1);
+        double robusAngularVelocity = (double) RobusMovement::getAngularVelocity();
+        double robusOrientation = (double) RobusMovement::computeOrientation();
 
-        float xVelocity = cos(robusOrientation) * robusVelocity * (inverted ? -1 : 1);
-        float yVelocity = sin(robusOrientation) * robusVelocity * (inverted ? -1 : 1);
+        #ifndef COMPLEX_MOVEMENT_INTEGRATION
+        double xVelocity = cos(robusOrientation) * robusVelocity;
+        double yVelocity = sin(robusOrientation) * robusVelocity;
 
         position.x += xVelocity * dt;
         position.y += yVelocity * dt;
+        #else
+        double radius = robusVelocity / robusAngularVelocity;
+
+        float xIntegration, yIntegration;
+
+        if (robusAngularVelocity == 0) {
+            xIntegration = cos(robusOrientation) * robusVelocity * dt;
+            yIntegration = sin(robusOrientation) * robusVelocity * dt;
+        } else {
+            xIntegration = radius * (sin(robusOrientation + robusAngularVelocity * dt) - sin(robusOrientation));
+            yIntegration = radius * (cos(robusOrientation) - cos(robusOrientation + robusAngularVelocity * dt));
+        }
+        #endif
 
         if (followingTarget) {
             float targetDistance = dist(position.x, position.y, target.x, target.y);
