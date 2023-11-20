@@ -1,5 +1,8 @@
 #include "RobusPosition.h"
-#define COMPLEX_MOVEMENT_INTEGRATION
+
+#ifndef INTEGRATION_ITERATION
+#define INTEGRATION_ITERATION 1
+#endif
 
 namespace RobusPosition
 {
@@ -44,32 +47,16 @@ namespace RobusPosition
         float dt = (time - oldTime) / 1000000.0;
         oldTime = time;
 
-        double robusVelocity = (double) RobusMovement::getVelocity() * (inverted ? -1 : 1);
-        double robusAngularVelocity = (double) RobusMovement::getAngularVelocity();
+        const double robusVelocity = (double) RobusMovement::getVelocity() * (inverted ? -1 : 1);
+        const double robusAngularVelocity = (double) RobusMovement::getAngularVelocity();
         double robusOrientation = (double) RobusMovement::computeOrientation();
 
-        #ifndef COMPLEX_MOVEMENT_INTEGRATION
-        double xVelocity = cos(robusOrientation) * robusVelocity;
-        double yVelocity = sin(robusOrientation) * robusVelocity;
-
-        position.x += xVelocity * dt;
-        position.y += yVelocity * dt;
-        #else
-        double radius = robusVelocity / robusAngularVelocity;
-
-        float xIntegration, yIntegration;
-
-        if (robusAngularVelocity == 0) {
-            xIntegration = cos(robusOrientation) * robusVelocity * dt;
-            yIntegration = sin(robusOrientation) * robusVelocity * dt;
-        } else {
-            xIntegration = radius * (sin(robusOrientation + robusAngularVelocity * dt) - sin(robusOrientation));
-            yIntegration = radius * (cos(robusOrientation) - cos(robusOrientation + robusAngularVelocity * dt));
+        double iterationDt = dt / INTEGRATION_ITERATION;
+        for (int i = 0; i < INTEGRATION_ITERATION; i++) {
+            position.x += cos(robusOrientation) * robusVelocity * iterationDt;
+            position.y += sin(robusOrientation) * robusVelocity * iterationDt;
+            robusOrientation += robusAngularVelocity * iterationDt;
         }
-
-        position.x += xIntegration;
-        position.y += yIntegration;
-        #endif
 
         if (followingTarget) {
             float targetDistance = dist(position.x, position.y, target.x, target.y);
