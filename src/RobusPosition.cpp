@@ -73,7 +73,7 @@ namespace RobusPosition
                 robusDirection.y = sin(robusOrientation);
 
                 float directionDot = robusDirection.x * targetDirection.x + robusDirection.y * targetDirection.y;
-                float velocity = pow(directionDot, curveTightness) * followVelocity * (inverted ? -1 : 1);
+                float velocity = pow(constrain(0, directionDot, 1), curveTightness) * followVelocity * (inverted ? -1 : 1);
                 
                 float deltaOrientation = smallestSignedAngle(robusOrientation, targetAngle);
                 float angularVelocity = deltaOrientation * followAngularVelocityScale;
